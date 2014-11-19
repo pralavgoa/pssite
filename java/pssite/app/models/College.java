@@ -10,11 +10,12 @@ public class College {
 	private static List<College> colleges;
 	
 	static{
+		colleges = new ArrayList<College>();
 		colleges.add(new College("BITS-Pilani","Goa"));
 		colleges.add(new College("IIT", "Mumbai"));
 	}
 	
-	public int internalId;
+	public String  internalId;
 	public String shortName;
 	@Constraints.Required
 	public String fullName;
@@ -25,6 +26,7 @@ public class College {
 	
 	public College(String fullName,String address){
 		this.fullName = fullName;
+		this.address = address;
 	}
 	
 	public static List<College> findAll(){

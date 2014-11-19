@@ -1,0 +1,47 @@
+@(colleges: List[College])
+
+@main("Colleges") {
+	<h2>All colleges</h2>
+	<script>
+		function del(urlToDelete) {
+			$.ajax({
+				url: urlToDelete,
+				type: 'DELETE',
+				success: function(results) {
+				// Refresh the page
+				location.reload();
+				}
+			});
+		}
+	</script>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Short name</th>
+				<th>Address</th>
+			</tr>
+		</thead>
+		<tbody>
+		@for(college <- colleges) {
+			<tr>
+				<td>
+				@college.fullName
+				</a></td>
+				<td>
+				@college.shortName</a></td>
+				<td>
+				@college.address</a></td>
+				<td>
+				
+				<i class="icon icon-pencil"></i></a>
+				
+				<i class="icon icon-trash">Delete</i></a>
+				</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+	<a href="@routes.Colleges.newCollege()" class="btn">
+	<i class="icon-plus"></i> New college</a>
+}
